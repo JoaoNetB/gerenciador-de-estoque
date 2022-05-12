@@ -6,7 +6,8 @@
 
         public function carregar() {
 
-            if(!isset($_GET['pagina']) || $_GET['pagina'] == 'home' || $_GET['pagina'] == 'produto') {
+            if(!isset($_GET['pagina']) || $_GET['pagina'] == 'home' || $_GET['pagina'] == 'produto' 
+            || $_GET['pagina'] == 'contribuidor') {
 
                 $loader = new \Twig\Loader\FilesystemLoader('app/View');
                 $twig = new \Twig\Environment($loader);

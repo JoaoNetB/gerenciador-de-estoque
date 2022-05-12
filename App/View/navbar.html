@@ -12,6 +12,11 @@
                     <li class="nav-item">
                         <a class="nav-link active text-white" aria-current="page" href="http://localhost/projeto/">Home</a>
                     </li>
+                    {% if cargo == 'admin' %}
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" aria-current="page" href="http://localhost/projeto/?pagina=contribuidor">Contribuidores</a>
+                        </li>
+                    {% endif %}
                 </ul>
                 <span class="navbar-text text-white">
                     {{nome}} - {{cargo}}

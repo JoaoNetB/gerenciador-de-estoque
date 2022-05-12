@@ -88,4 +88,22 @@
             $_SESSION['cargoGerenciador'] = $retorno[0]['cargo'];
             $_SESSION['nomeGerenciador'] = $retorno[0]['nome'];
         }
+
+        public function buscarTodosUsuarios() {
+
+            $conexao = Conexao::getConn();
+
+            $sql = "SELECT * FROM usuario";
+            $sql = $conexao->prepare($sql);
+            $sql->execute();
+
+            $resultado = $sql->rowCount();
+            $conteudo = $sql->fetchAll();
+
+            if($resultado == 0) {
+                throw new \Exception("Nenhum usuario foi encontrado");
+            }
+
+            return $conteudo;
+        }
     }
