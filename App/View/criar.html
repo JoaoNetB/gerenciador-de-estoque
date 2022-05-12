@@ -1,0 +1,27 @@
+<form action="?pagina=produto&metodo=criar" method="POST">
+    <div class="row justify-content-center mt-5">
+        <div class="col-6">
+            {% if mensagemErro != '' %}
+            <div class="alert alert-danger mb-3" role="alert">
+                {{mensagemErro}}
+            </div>
+            {% endif %}
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" 
+                placeholder="Digite o nome do produto">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">quantidade</label>
+                <input type="number" class="form-control" id="quantidade" name="quantidade"
+                    placeholder="Digite a quantidade">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Valor</label>
+                <input type="number" class="form-control" id="valor" name="valor"
+                    placeholder="Digite o valor do produto" step=".01">
+            </div>
+            <button type="submit" class="btn btn-primary">Criar</button>
+        </div>
+    </div>
+</form>

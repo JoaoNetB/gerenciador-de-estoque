@@ -1,4 +1,7 @@
 {
+    "name": "joaonetb/gerenciador-de-estoque",
+    "version": "1.0.0-alpha",
+    "license": "MIT",
     "require": {
         "twig/twig": "^3.3"
     },

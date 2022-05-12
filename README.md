@@ -2,6 +2,7 @@
 
 
 [![GitHub license](https://img.shields.io/github/license/JoaoNetB/gerenciador-de-estoque?style=for-the-badge)](https://github.com/JoaoNetB/gerenciador-de-estoque/blob/main/LICENSE)
+![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/JoaoNetB/gerenciador-de-estoque?include_prereleases&style=for-the-badge)
 
 ## ⚠️ __ATENÇÃO__ ⚠️
 
