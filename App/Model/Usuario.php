@@ -15,6 +15,10 @@
 
         public function setId($id)
         {
+            if(empty(str_replace(" ", "", $id))) {
+                throw new \InvalidArgumentException("Existe um ou mais campos inválidos");
+            }
+
             $this->id = $id;
         }
 
@@ -25,6 +29,9 @@
 
         public function setNome($nome)
         {
+            if(empty(str_replace(" ", "", $nome))) {
+                throw new \InvalidArgumentException("Existe um ou mais campos inválidos");
+            }
             $this->nome = $nome;
 
         }
@@ -36,6 +43,10 @@
 
         public function setEmail($email)
         {
+            if(empty(str_replace(" ", "", $email))) {
+                throw new \InvalidArgumentException("Existe um ou mais campos inválidos");
+            }
+
             $this->email = $email;
         }
 
@@ -46,7 +57,11 @@
 
         public function setSenha($senha)
         {
-            $this->senha = $senha;
+            if(empty(str_replace(" ", "", $senha))) {
+                throw new \InvalidArgumentException("Existe um ou mais campos inválidos");
+            }
+
+            $this->senha = password_hash($senha, PASSWORD_DEFAULT);
         }
 
         public function getCargo()
@@ -55,7 +70,11 @@
         }
 
         public function setCargo($cargo)
-        {
+        {   
+            if(empty(str_replace(" ", "", $cargo))) {
+                throw new \InvalidArgumentException("Existe um ou mais campos inválidos");
+            }
+
             $this->cargo = $cargo;
         }
 
@@ -105,5 +124,24 @@
             }
 
             return $conteudo;
+        }
+
+        public function criarUsuario() {
+
+            $conexao = Conexao::getConn();
+
+            $sql = "INSERT INTO usuario (nome, email, senha, cargo) VALUES (:nome, :email, :senha, :cargo)";
+            $sql = $conexao->prepare($sql);
+            $sql->bindValue(':nome', $this->getNome());
+            $sql->bindValue(':email', $this->getEmail());
+            $sql->bindValue(':senha', $this->getSenha());
+            $sql->bindValue(':cargo', $this->getCargo());
+            $sql->execute();
+
+            $resultado = $sql->rowCount();
+
+            if($resultado == 0) {
+                throw new \Exception("Não foi possível criar esse usuário");
+            }
         }
     }

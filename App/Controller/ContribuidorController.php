@@ -46,4 +46,48 @@
                 header('Location: ?pagina=login');
             }
         }
+
+        public function criar() {
+            if(isset($_SESSION['loginGerenciador']) && $_SESSION['loginGerenciador'] == true 
+            && $_SESSION['cargoGerenciador'] == 'admin') {
+
+                $parametros = array();
+
+                $loader = new \Twig\Loader\FilesystemLoader('App/View');
+                $twig = new \Twig\Environment($loader);
+                $template = $twig->load('criarUsuario.html');
+
+                $parametros['mensagemErro'] = $_SESSION['mensagemErro'];
+
+                $conteudo = $template->render($parametros);
+
+                $_SESSION['mensagemErro'] = '';
+
+                echo $conteudo;
+            } else {
+
+                header('Location: ?pagina=login');
+            }
+        }
+
+        public function adicionar() {
+            if(isset($_SESSION['loginGerenciador']) && $_SESSION['loginGerenciador'] == true 
+            && $_SESSION['cargoGerenciador'] == 'admin') {
+
+                try {
+                    $usuario = new Usuario();
+                    $usuario->setNome($_POST['nome']);
+                    $usuario->setEmail($_POST['email']);
+                    $usuario->setSenha($_POST['senha']);
+                    $usuario->setCargo($_POST['cargo']);
+                    $usuario->criarUsuario();
+
+                    header('Location: ?pagina=contribuidor');
+                } catch (\Exception $err) {
+
+                    $_SESSION['mensagemErro'] = $err->getMessage();
+                    header('Location: ?pagina=contribuidor&metodo=criar');
+                }
+            }
+        }
     }
