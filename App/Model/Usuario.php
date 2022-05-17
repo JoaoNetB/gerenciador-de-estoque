@@ -126,6 +126,24 @@
             return $conteudo;
         }
 
+        public function buscarUsuarioPorId() {
+
+            $conexao = Conexao::getConn();
+
+            $sql = "SELECT * FROM usuarios WHERE id = :id";
+            $sql = $conexao->prepare($sql);
+            $sql->execute();
+
+            $resultado = $sql->rowCount();
+            $conteudo = $sql->fetchAll();
+
+            if($resultado == 0) {
+                throw new \Exception("Esse usuário não foi encontrado");
+            }
+
+            return $conteudo;
+        }
+
         public function criarUsuario() {
 
             $conexao = Conexao::getConn();
@@ -136,12 +154,32 @@
             $sql->bindValue(':email', $this->getEmail());
             $sql->bindValue(':senha', $this->getSenha());
             $sql->bindValue(':cargo', $this->getCargo());
-            $sql->execute();
+            $resultado= $sql->execute();
 
-            $resultado = $sql->rowCount();
 
             if($resultado == 0) {
                 throw new \Exception("Não foi possível criar esse usuário");
+            }
+        }
+
+        public function editarUsuario($id) {
+
+            $this->setId($id);
+
+            $conexao = Conexao::getConn();
+
+            $sql = "UPDATE usuario SET nome = :nome, email = :email, 
+            senha = :senha, cargo = :cargo WHERE id = :id";
+            $sql = $conexao->prepare($sql);
+            $sql->bindValue(':nome', $this->getId());
+            $sql->bindValue(':nome', $this->getNome());
+            $sql->bindValue(':email', $this->getEmail());
+            $sql->bindValue(':senha', $this->getSenha());
+            $sql->bindValue(':cargo', $this->getCargo());
+            $resultado = $sql->execute();
+
+            if($resultado == 0) {
+                throw new \Exception("Não foi possível atualizar esse usuário");
             }
         }
     }

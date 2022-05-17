@@ -90,6 +90,27 @@
                     $_SESSION['mensagemErro'] = $err->getMessage();
                     header('Location: ?pagina=contribuidor&metodo=criar');
                 }
+            }else {
+
+                header('Location: ?pagina=login');
+            }
+        }
+
+        public function editar($params) {
+            if(isset($_SESSION['loginGerenciador']) && $_SESSION['loginGerenciador'] == true 
+            && $_SESSION['cargoGerenciador'] == 'admin') {
+
+                try {
+                    $usuario = new Usuario();
+
+                }catch (\Exception $err) {
+                    $_SESSION['mensagemErro'] = $err->getMessage();
+                    header('Location: ?pagina=contribuidor&metodo=editar');
+                }
+
+            }else {
+
+                header('Location: ?pagina=login');
             }
         }
     }
