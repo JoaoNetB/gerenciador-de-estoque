@@ -10,7 +10,9 @@
             $twig = new \Twig\Environment($loader);
             $template = $twig->load('erro.html');
 
-            $conteudo = $template->render();
+            $parametros['nomeUrl'] = getenv('NOME_URL');
+
+            $conteudo = $template->render($parametros);
 
             echo $conteudo;
         }

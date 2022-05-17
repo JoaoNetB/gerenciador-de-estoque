@@ -1,6 +1,6 @@
 <div class="mt-5">
     <h2>Contribuidores</h2>
-    <a href="http://localhost/projeto/?pagina=contribuidor&metodo=criar" class="btn btn-primary mt-5">Novo contribuidor</a>
+    <a href="{{nomeUrl}}?pagina=contribuidor&metodo=criar" class="btn btn-primary mt-5">Novo contribuidor</a>
 
     <div class="lista-produtos mt-3 table-responsive">
         <h4>Lista de contribuidores</h4>
@@ -29,7 +29,7 @@
                         <td>{{usuario.email}}</td>
                         <td>{{usuario.cargo}}</td>
                         <td>
-                            <a href="http://localhost/projeto/?pagina=contribuidor&metodo=editar&id={{usuario.id}}" 
+                            <a href="{{nomeUrl}}?pagina=contribuidor&metodo=editar&id={{usuario.id}}" 
                             class="btn btn-primary">
                                 <span class="material-icons text-white">
                                     edit
@@ -37,7 +37,7 @@
                             </a>
                         </td>
                         <td>
-                            <a href="http://localhost/projeto/?pagina=contribuidor&metodo=deletar&id={{usuario.id}}" 
+                            <a href="{{nomeUrl}}?pagina=contribuidor&metodo=deletar&id={{usuario.id}}" 
                             class="btn btn-danger">
                                 <span class="material-icons text-white">
                                     delete

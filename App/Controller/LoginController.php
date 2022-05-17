@@ -33,7 +33,7 @@
             try {
                 $usuario->buscarLogin($_POST['email'], $_POST['senha']);
 
-                header('Location: http://localhost/projeto/');
+                header('Location: '.getenv('NOME_URL'));
             } catch (\Exception $err) {
 
                 $_SESSION['mensagemErro'] = $err->getMessage();
@@ -45,6 +45,6 @@
         public function sair() {
 
             session_destroy();
-            header('Location: http://localhost/projeto/');
+            header('Location: '.getenv('NOME_URL'));
         }
     }

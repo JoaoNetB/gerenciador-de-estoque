@@ -1,6 +1,6 @@
 <div class="mt-5">
     <h2>Olá {{nome}}!</h2>
-    <a href="http://localhost/projeto/?pagina=produto" class="btn btn-primary mt-5">Novo produto</a>
+    <a href="{{nomeUrl}}?pagina=produto" class="btn btn-primary mt-5">Novo produto</a>
 
     <div class="lista-produtos mt-3 table-responsive">
         <h4>Estoque atual</h4>
@@ -29,7 +29,7 @@
                         <td>{{produto.quantidade}}</td>
                         <td>R${{produto.valor_produto}}</td>
                         <td>
-                            <a href="http://localhost/projeto/?pagina=produto&metodo=editar&id={{produto.id}}" 
+                            <a href="{{nomeUrl}}?pagina=produto&metodo=editar&id={{produto.id}}" 
                             class="btn btn-primary">
                                 <span class="material-icons text-white">
                                     edit
@@ -37,7 +37,7 @@
                             </a>
                         </td>
                         <td>
-                            <a href="http://localhost/projeto/?pagina=produto&metodo=deletar&id={{produto.id}}" 
+                            <a href="{{nomeUrl}}?pagina=produto&metodo=deletar&id={{produto.id}}" 
                             class="btn btn-danger">
                                 <span class="material-icons text-white">
                                     delete

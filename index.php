@@ -2,6 +2,10 @@
 
 require_once 'vendor/autoload.php';
 
+use App\Common\Ambiente;
+
+Ambiente::carregar(__DIR__);
+
 session_start();
 
 $template = file_get_contents('App/Template/estrutura.html');

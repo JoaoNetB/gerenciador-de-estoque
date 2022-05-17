@@ -36,6 +36,7 @@
                 }
     
                 $parametros['mensagemErro'] = $_SESSION['mensagemErro'];
+                $parametros['nomeUrl'] = getenv('NOME_URL');
 
                 $conteudo = $template->render($parametros);
 
@@ -58,6 +59,7 @@
                 $template = $twig->load('criarUsuario.html');
 
                 $parametros['mensagemErro'] = $_SESSION['mensagemErro'];
+                $parametros['nomeUrl'] = getenv('NOME_URL');
 
                 $conteudo = $template->render($parametros);
 

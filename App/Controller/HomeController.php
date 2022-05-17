@@ -36,6 +36,7 @@
                 }
     
                 $parametros['mensagemErro'] = $_SESSION['mensagemErro'];
+                $parametros['nomeUrl'] = getenv('NOME_URL');
 
                 $loader = new \Twig\Loader\FilesystemLoader('App/View');
                 $twig = new \Twig\Environment($loader);

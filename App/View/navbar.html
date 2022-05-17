@@ -10,11 +10,11 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active text-white" aria-current="page" href="http://localhost/projeto/">Home</a>
+                        <a class="nav-link active text-white" aria-current="page" href="{{nomeUrl}}">Home</a>
                     </li>
                     {% if cargo == 'admin' %}
                         <li class="nav-item">
-                            <a class="nav-link active text-white" aria-current="page" href="http://localhost/projeto/?pagina=contribuidor">Contribuidores</a>
+                            <a class="nav-link active text-white" aria-current="page" href="{{nomeUrl}}?pagina=contribuidor">Contribuidores</a>
                         </li>
                     {% endif %}
                 </ul>
@@ -23,7 +23,7 @@
                 </span>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="http://localhost/projeto/?pagina=login&metodo=sair" class="btn btn-nav">
+                        <a href="{{nomeUrl}}?pagina=login&metodo=sair" class="btn btn-nav">
                             <span class="material-icons text-white">
                                 logout
                             </span>

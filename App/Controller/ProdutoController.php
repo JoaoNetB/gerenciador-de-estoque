@@ -21,6 +21,7 @@
                 }
     
                 $parametros['mensagemErro'] = $_SESSION['mensagemErro'];
+                $parametros['nomeUrl'] = getenv('NOME_URL');
 
                 $conteudo = $template->render($parametros);
 
@@ -42,7 +43,7 @@
 
                 $produto->criarProduto();
 
-                header('Location: http://localhost/projeto/');
+                header('Location: '.getenv('NOME_URL'));
             }catch (\Exception $err) {
 
                 $_SESSION['mensagemErro'] = $err->getMessage();
@@ -76,6 +77,7 @@
                 }
     
                 $parametros['mensagemErro'] = $_SESSION['mensagemErro'];
+                $parametros['nomeUrl'] = getenv('NOME_URL');
 
                 $conteudo = $template->render($parametros);
 
@@ -97,7 +99,7 @@
                 $produto->setValorProduto($_POST['valor']);
                 $produto->atualizarProduto();
 
-                header('Location: http://localhost/projeto/');
+                header('Location: '.getenv('NOME_URL'));
 
             }catch (\Exception $err) {
                 $_SESSION['mensagemErro'] = $err->getMessage();
@@ -111,11 +113,11 @@
                 $produto = new Produto();
                 $produto->setId($params['id']);
                 $produto->deletarProduto();
-                header('Location: http://localhost/projeto/');
+                header('Location: '.getenv('NOME_URL'));
                 
             }catch (\Exception $err) {
                 $_SESSION['mensagemErro'] = $err->getMessage();
-                header('Location: http://localhost/projeto/');
+                header('Location: '.getenv('NOME_URL'));
             }
         }
     }
